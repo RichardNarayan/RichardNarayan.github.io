@@ -1,0 +1,15 @@
+.login {
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 60px;
+  padding-right: 30px;
+  margin-bottom: 50px;
+  font-size: 13px;
+}
+
+.card.mainBody {
+  height: calc(100vh - 300px);
+  border-top: 10px solid #1b73bd;
+  border-bottom: 10px solid #1b73bd;
+  border-radius: 10px;
+  padding-top: 35px;
+}

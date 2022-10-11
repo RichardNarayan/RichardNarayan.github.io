@@ -1,0 +1,50 @@
+<nav class="navbar fixed-top">
+    <img
+    [routerLink]="['/home']"
+    src="assets/images/studiocdn2.svg"
+    class="d-inline-block align-top"
+    alt=""
+    />
+    <a target="_blank" href="http://studiocdn.com/support/" class="nav-item">
+    <img src="assets/images/help-icon.png" />
+    </a>
+    <a class="nav-item cursor" (click)="logoutUser()">Logout</a>
+    <span class="nav-item">{{ this.username }}</span>
+    <div class="menu-item">
+       
+            <div class="row">
+                <a class="col-md-3 button-nav nav-button-tab" [routerLink]="['/admin-create-user']">
+                    <p>Create user</p>
+                </a>
+                <a class="col-md-3 button-nav nav-button-tab" [routerLink]="['/deactivate']">
+                    <p>Deactivate user</p>
+                </a>
+                <a class="col-md-3 button-nav nav-button-tab" [routerLink]="['/delete']">
+                    <p>Delete user</p>
+                </a>
+            </div>
+       
+    </div>
+ 
+</nav>
+
+<hr class="hr-tableline" />
+<div class="main-container scrollbar">
+  <router-outlet></router-outlet>
+</div>
+<div class="footer">
+    <div class="container">
+        <div class="row m-0 justify-content-md-center h-100">
+            <div class="col-md-12">
+            <ng-content></ng-content>
+            <div class="row login-footer text-muted text-center mt-2">
+            <div class="col-md-12">
+                <p>
+                    © Media Science International. All Rights Reserved.
+                </p>
+            </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

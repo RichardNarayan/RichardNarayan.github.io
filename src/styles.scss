@@ -1,0 +1,61 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+//login-related-css
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+  }
+  
+  .all-btns {
+    color: #fcfcfc;
+    background-color: #2e578e;
+    border: none;
+    font-size: 12px;
+    padding: 7px 17px;
+    text-align: center;
+    @include border-radius(5px);
+    text-decoration: none;
+    &:hover {
+      color: #fff;
+      background-color: #3f75bd;
+      outline: none;
+      text-decoration: none;
+    }
+  }
+  
+  #login-btn,
+  #submit-btn {
+    background-color: #1b73bd;
+    font-size: 13px !important;
+    padding: 8px 28px;
+    &:hover {
+      background-color: #3a8ed5;
+    }
+    &:focus {
+      outline: none !important;
+    }
+  }
+  
+  .login{
+    .card-wrapper {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+  }
+  
+  .mainBody {
+    padding: 10px 30px;
+    width: 110%;
+    min-height: 350px;
+  }
+  
+  .login-footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+  }

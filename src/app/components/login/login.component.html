@@ -1,0 +1,95 @@
+<form class="login">
+  <div class="card-wrapper">
+    <div class="card mainBody justify-content-center align-self-center">
+      <!-- error section -->
+      <div
+        class="error-position"
+        [style.visibility]="
+          authMessage && authMessage.length > 0 ? 'visible' : 'hidden'
+        "
+      >
+        {{ authMessage }}
+      </div>
+      <!--/ error section -->
+
+      <div class="mt-1 text-center">
+        <h2>Web Client Login</h2>
+      </div>
+
+      <!-- user-input section for normal user -->
+      <div *ngIf="normalLogin">
+        <div class="row text-center mt-2">
+          <div class="col-md-12 col-sm-12 mb-2">
+            <strong> {{ creds.title }}</strong
+            ><br />
+            <span class="mt-1" *ngIf="emailAddress">{{ creds.email }}</span>
+          </div>
+
+          <div *ngIf="!emailAddress" class="col-md-12 col-sm-12 mt-4">
+            <div [class.redLine]="authMessage" class="form-group">
+              <input
+                type="text"
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$"
+                class="form-control"
+                [(ngModel)]="creds.email"
+                [ngModelOptions]="{ standalone: true }"
+                id="email"
+                placeholder="Enter your email"
+                autofocus
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="emailAddress" class="row mt-2">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+              <input
+                type="password"
+                class="form-control"
+                [(ngModel)]="creds.pswd"
+                [ngModelOptions]="{ standalone: true }"
+                id="password"
+                placeholder="Enter your password"
+                required
+                autofocus
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- next-button -->
+        <div class="row mt-2 mb-5 text-right">
+          <div class="col-md-12 col-sm-12">
+            <button
+              (click)="userLogin(creds)"
+              class="all-btns"
+              id="login-btn"
+              type="submit"
+            >
+              <span class="mr-1 ml-1"> Next </span>
+            </button>
+          </div>
+        </div>
+        <!--/ next-button -->
+
+        <div class="row" class="text-center font-weight-bolder mt-5">
+          Need help logging In?
+          <a href="https://studiocdn.com/support/" target="_blank">
+            Click here
+          </a>
+        </div>
+      </div>
+      <!--/ user-input section for normal user -->
+
+      <!-- user-input section for adfs user -->
+      <div *ngIf="!normalLogin">
+        <h2 class="mt-4 text-center">
+          Please wait while you are being redirected.
+        </h2>
+      </div>
+      <!-- / user-input section for adfs user -->
+    </div>
+  </div>
+</form>

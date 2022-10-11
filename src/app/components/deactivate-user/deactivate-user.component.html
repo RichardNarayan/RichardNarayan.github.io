@@ -1,0 +1,50 @@
+<div class="deactivate">
+  <div class="container">
+      <div class="deactivate-content">
+          <div class="header">
+            <h3>Enable/Disable User</h3>
+            <div *ngIf="successMessage" class="alert alert-success" role="alert">
+              The user has been deactivated successfully!
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+              {{ errorMessage }}
+          </div>
+          <div *ngIf="activateSuccessMessage" class="alert alert-success" role="alert">
+            The user has been activated successfully!
+          </div>
+          <div *ngIf="activateErrorMessage" class="alert alert-danger" role="alert">
+            {{ activateErrorMessage }}
+        </div>
+          <form [formGroup]="form">
+            <div class="form-single">
+              <label>Email Address*</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="email"
+                placeholder="Enter email address here"
+                [ngClass]="{ 'is-invalid': email.touched && email.invalid }"
+                />                
+                <div *ngIf="email.invalid">
+                  <div
+                  class="text-danger"
+                  *ngIf="!invalidEmail && email.touched"
+                  >
+                      Email is Invalid.
+                  </div>
+                  <div
+                      class="text-danger"
+                      *ngIf="email.errors.required && email.touched"
+                  >
+                      Email is required.
+                  </div>
+              </div>
+          </div>
+        </form>
+          <div class="button">
+            <button (click)="deactivateEmail()" class="btn disablebttn">Disable</button>
+            <button (click)="activateEmail()" class="btn btn-primary">Enable</button>
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+.container
+{
+    align-items: center;
+    margin-top: 100px;
+    margin-left: 5%;
+    display: inline-grid;
+    min-height: 70%;
+    min-height: -webkit-calc(100% - 186px);
+    min-height: -moz-calc(100% - 186px);
+    min-height: calc(100% - 186px);
+}
+
+.menu-link-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card{
+  width: 50rem;
+  background-color: #8080800f;
+  padding: 2rem;
+}
+
+a:link, a:visited {
+    background-color: white;
+    color: black;
+    border: 1px solid #2e578e;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  a:hover, a:active {
+    background-color: #2e578e;
+    color: white;
+  }

@@ -1,0 +1,129 @@
+<div class="form-wrapper">
+  <div class="container">
+    <div class="wrapper">
+      <div class="form-title">
+        <h3>Two Factor Authentication</h3>
+      </div>
+
+      <form [formGroup]="twoFactorAuthenticationForm">
+        <div class="form-single">
+          <label>Phone Number</label><br />
+          <ngx-intl-tel-input
+            class="form-control"
+            [preferredCountries]="[
+              CountryISO.UnitedStates,
+              CountryISO.UnitedKingdom
+            ]"
+            [enableAutoCountrySelect]="true"
+            [enablePlaceholder]="true"
+            [searchCountryFlag]="true"
+            [searchCountryField]="[
+              SearchCountryField.Iso2,
+              SearchCountryField.Name,
+              SearchCountryField.DialCode
+            ]"
+            [selectFirstCountry]="false"
+            [selectedCountryISO]="CountryISO.UnitedStates"
+            [separateDialCode]="true"
+            [maxLength]="15"
+            [phoneValidation]="true"
+            formControlName="phoneNumber"
+            [ngClass]="{ 'is-invalid': submitted && phoneNumber.invalid }"
+          >
+          </ngx-intl-tel-input>
+          <div *ngIf="submitted && phoneNumber.invalid">
+            <div class="text-danger" *ngIf="phoneNumber.errors.required">
+              Phone number is required
+            </div>
+            <div class="text-danger" *ngIf="phoneNumber.errors.maxlength">
+              Enter a valid phone number
+            </div>
+          </div>
+        </div>
+
+        <div class="form-single">
+          <label class="mb-2">Security Question</label>
+          <select
+            name="firstQuestion"
+            formControlName="firstQuestion"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && firstQuestion.invalid }"
+          >
+            <option value="">
+              {{ 'CHOOSE_SECURITY_QUESTION' }}
+            </option>
+            <option *ngFor="let question of questions" [value]="question.id">
+              {{ question.value }}
+            </option>
+          </select>
+          <div *ngIf="submitted && firstQuestion.invalid">
+            <div class="text-danger" *ngIf="firstQuestion.errors.required">
+              Question one is required
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <input
+              type="text"
+              formControlName="firstAnswer"
+              class="form-control"
+              placeholder="Answer"
+              [ngClass]="{ 'is-invalid': submitted && firstAnswer.invalid }"
+            />
+          </div>
+          <div *ngIf="submitted && firstAnswer.invalid">
+            <div class="text-danger" *ngIf="firstAnswer.errors.required">
+              Answer 1 is Required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-single">
+          <label class="mb-2">Security Question</label>
+          <select
+            name="secondQuestion"
+            formControlName="secondQuestion"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && secondQuestion.invalid }"
+          >
+            <option value="">CHOOSE_SECURITY_QUESTION</option>
+            <option *ngFor="let question of questions" [value]="question.id">
+              {{ question.value }}
+            </option>
+          </select>
+          <div *ngIf="submitted && secondQuestion.invalid">
+            <div class="text-danger" *ngIf="secondQuestion.errors.required">
+              Question 2 is Required
+            </div>
+          </div>
+          <div class="mt-4">
+            <input
+              type="text"
+              formControlName="secondAnswer"
+              class="form-control"
+              placeholder="Answer"
+              [ngClass]="{ 'is-invalid': submitted && secondAnswer.invalid }"
+            />
+          </div>
+          <div *ngIf="submitted && secondAnswer.invalid">
+            <div class="text-danger" *ngIf="secondAnswer.errors.required">
+              Answer is Required
+            </div>
+          </div>
+        </div>
+        <div *ngIf="errorMessage" class="text-danger">
+          {{ errorMessage }}
+        </div>
+        <div class="form-button">
+          <button
+            type="submit"
+            class="btn btn-primary mb-3"
+            (click)="onSubmit()"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

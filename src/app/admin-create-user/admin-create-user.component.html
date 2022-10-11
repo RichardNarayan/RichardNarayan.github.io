@@ -1,0 +1,71 @@
+<div class="user-creation">
+    <div class="container">
+        <div class="create-user-content">
+            <div class="header">
+                <h3>Create User</h3>
+                <div *ngIf="successMessage" class="alert alert-success" role="alert">
+                    The user has been created successfully!
+                </div>
+                <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+                    {{ errorMessage }}
+                </div>
+            </div>
+            <form [formGroup]="form">
+                <div class="form-single">
+                    <label>Email Address*</label>
+                    <input
+                    type="text"
+                    class="form-control"
+                    formControlName="email"
+                    placeholder="Enter email address here"
+                    [ngClass]="{ 'is-invalid': email.touched && email.invalid }"
+                    />
+                    <div *ngIf="email.invalid">
+                        <div
+                        class="text-danger"
+                        *ngIf="!invalidEmail && email.touched"
+                        >
+                            Email is Invalid.
+                        </div>
+                        <div
+                            class="text-danger"
+                            *ngIf="email.errors.required && email.touched"
+                        >
+                            Email is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-single">
+                    <label>Display Name</label>
+                    <input
+                    type="text"
+                    class="form-control"
+                    formControlName="displayName"
+                    placeholder="Enter display name here"
+                    />
+                </div>
+                <div *ngIf="setDomain" class="form-single">
+                    <label class="mb-2">Domain</label>
+                    <select
+                        name="domain"
+                        formControlName="domain"
+                        class="form-control"
+                        [ngClass]="{ 'is-invalid': domain.touched && domain.invalid }"
+                    >
+                        <option value="MSI">
+                            MSI
+                        </option>
+                        <option value="UMUSIC">
+                            UMUSIC
+                        </option>
+                    </select>
+                </div>
+            </form>
+            <div class="button">
+                <button (click)="createUser()"
+                type="submit"
+                class="btn btn-primary">Create</button>
+            </div>
+        </div>
+    </div>
+  </div>
